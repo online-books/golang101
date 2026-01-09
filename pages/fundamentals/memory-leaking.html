@@ -221,6 +221,11 @@ Go运行时出于两个原因并不杀掉处于永久阻塞状态的协程。
 </p>
 
 <p>
+需要注意的是，Go 1.24 引入了 清理（Cleanup）机制，以逐步取代终结器（finalizers）。清理机制不存在循环引用问题。
+详情请阅读<a href="https://pkg.go.dev/runtime#AddCleanup">runtime.AddCleanup的API文档</a>。
+</p>
+
+<p>
 顺便说一下，我们<a href="unofficial-faq.html#finalizers">不应该把终结器用做析构函数</a>。
 </p>
 </div>

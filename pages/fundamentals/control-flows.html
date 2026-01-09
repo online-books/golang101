@@ -117,12 +117,9 @@ Go 1.22引入的<code>for range anInteger {...}</code>循环也将被介绍。
 import (
 	"fmt"
 	"math/rand"
-	"time"
 )
 
 func main() {
-	rand.Seed(time.Now().UnixNano()) // Go 1.20之前需要
-
 	if n := rand.Int(); n%2 == 0 {
 		fmt.Println(n, "是一个偶数。")
 	} else {
@@ -482,11 +479,9 @@ default:
 import (
 	"fmt"
 	"math/rand"
-	"time"
 )
 
 func main() {
-	rand.Seed(time.Now().UnixNano()) // Go 1.20之前需要
 	switch n := rand.Intn(100); n%9 {
 	case 0:
 		fmt.Println(n, "is a multiple of 9.")
@@ -528,8 +523,7 @@ https://github.com/golang/go/blob/5a7cfbc0117bce314c3f079ece459173b9efc854/src/c
 那么如何让执行从一个<code>case</code>分支代码块的结尾跳入下一个分支代码块？Go提供了一个<code>fallthrough</code>关键字来完成这个任务。
 比如，在下面的例子中，所有的分支代码块都将得到执行（从上到下）。
 
-<pre class="line-numbers"><code class="language-go">rand.Seed(time.Now().UnixNano()) // Go 1.20之前需要
-switch n := rand.Intn(100) % 5; n {
+<pre class="line-numbers"><code class="language-go">switch n := rand.Intn(100) % 5; n {
 case 0, 1, 2, 3, 4:
 	fmt.Println("n =", n)
 	fallthrough // 跳到下个代码块

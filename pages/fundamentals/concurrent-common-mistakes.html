@@ -357,6 +357,18 @@ func main() {
 <p>
 </p>
 
+注意：Go 1.25 引入了 sync.WaitGroup.Go 方法来避免这个问题。使用这个方法，我们可以将上面的代码重写为
+
+<pre class="line-numbers"><code class="language-go">...
+	for i := 0; i < 100; i++ {
+		wg.Go(func() {
+			atomic.AddInt32(&x, 1)
+			wg.Done()
+		})
+	}
+...
+</code></pre>
+
 </div>
 
 <h3>不当地使用用做Future/Promise的通道</h3>

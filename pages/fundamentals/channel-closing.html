@@ -204,14 +204,12 @@ func (mc *MyChannel) IsClosed() bool {
 <pre class="line-numbers"><code class="language-go">package main
 
 import (
-	"time"
+	"log"
 	"math/rand"
 	"sync"
-	"log"
 )
 
 func main() {
-	rand.Seed(time.Now().UnixNano()) // Go 1.20之前需要
 	log.SetFlags(0)
 
 	// ...
@@ -265,14 +263,12 @@ func main() {
 <pre class="line-numbers"><code class="language-go">package main
 
 import (
-	"time"
+	"log"
 	"math/rand"
 	"sync"
-	"log"
 )
 
 func main() {
-	rand.Seed(time.Now().UnixNano()) // Go 1.20之前需要
 	log.SetFlags(0)
 
 	// ...
@@ -359,15 +355,13 @@ func main() {
 <pre class="line-numbers"><code class="language-go">package main
 
 import (
-	"time"
-	"math/rand"
-	"sync"
 	"log"
+	"math/rand"
 	"strconv"
+	"sync"
 )
 
 func main() {
-	rand.Seed(time.Now().UnixNano()) // Go 1.20之前需要
 	log.SetFlags(0)
 
 	// ...
@@ -518,14 +512,13 @@ toStop := make(chan string, NumReceivers + NumSenders)
 <pre class="line-numbers"><code class="language-go">package main
 
 import (
-	"time"
+	"log"
 	"math/rand"
 	"sync"
-	"log"
+	"time"
 )
 
 func main() {
-	rand.Seed(time.Now().UnixNano()) // Go 1.20之前需要
 	log.SetFlags(0)
 
 	// ...
@@ -609,15 +602,14 @@ func main() {
 <pre class="line-numbers"><code class="language-go">package main
 
 import (
-	"time"
-	"math/rand"
-	"sync"
 	"log"
+	"math/rand"
 	"strconv"
+	"sync"
+	"time"
 )
 
 func main() {
-	rand.Seed(time.Now().UnixNano()) // Go 1.20之前需要
 	log.SetFlags(0)
 
 	// ...

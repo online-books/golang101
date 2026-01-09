@@ -45,9 +45,9 @@ Future/promise常常用在请求/回应场合。
 <pre class="line-numbers"><code class="language-go">package main
 
 import (
-	"time"
-	"math/rand"
 	"fmt"
+	"math/rand"
+	"time"
 )
 
 func longTimeRequest() <-chan int32 {
@@ -66,8 +66,6 @@ func sumSquares(a, b int32) int32 {
 }
 
 func main() {
-	rand.Seed(time.Now().UnixNano()) // Go 1.20之前需要
-
 	a, b := longTimeRequest(), longTimeRequest()
 	fmt.Println(sumSquares(<-a, <-b))
 }
@@ -89,9 +87,9 @@ func main() {
 <pre class="line-numbers"><code class="language-go">package main
 
 import (
-	"time"
-	"math/rand"
 	"fmt"
+	"math/rand"
+	"time"
 )
 
 func longTimeRequest(r chan<- int32)  {
@@ -104,8 +102,6 @@ func sumSquares(a, b int32) int32 {
 }
 
 func main() {
-	rand.Seed(time.Now().UnixNano()) // Go 1.20之前需要
-
 	ra, rb := make(chan int32), make(chan int32)
 	go longTimeRequest(ra)
 	go longTimeRequest(rb)
@@ -158,8 +154,8 @@ func main() {
 
 import (
 	"fmt"
-	"time"
 	"math/rand"
+	"time"
 )
 
 func source(c chan<- int32) {
@@ -170,8 +166,6 @@ func source(c chan<- int32) {
 }
 
 func main() {
-	rand.Seed(time.Now().UnixNano()) // Go 1.20之前需要
-
 	startTime := time.Now()
 	c := make(chan int32, 5) // 必须用一个缓冲通道
 	for i := 0; i < cap(c); i++ {
@@ -536,8 +530,8 @@ func main() {
 
 import (
 	"log"
-	"time"
 	"math/rand"
+	"time"
 )
 
 type Seat int
@@ -554,8 +548,6 @@ func (bar Bar) ServeCustomer(c int) {
 }
 
 func main() {
-	rand.Seed(time.Now().UnixNano()) // Go 1.20之前需要
-
 	bar24x7 := make(Bar, 10) // 此酒吧有10个座位
 	// 摆放10个座位。
 	for seatId := 0; seatId < cap(bar24x7); seatId++ {
@@ -594,8 +586,6 @@ func (bar Bar) ServeCustomerAtSeat(c int, seat Seat) {
 }
 
 func main() {
-	rand.Seed(time.Now().UnixNano()) // Go 1.20之前需要
-
 	bar24x7 := make(Bar, 10)
 	for seatId := 0; seatId < cap(bar24x7); seatId++ {
 		bar24x7 <- Seat(seatId)
@@ -630,8 +620,6 @@ func (bar Bar) ServeCustomerAtSeat(consumers chan int) {
 }
 
 func main() {
-	rand.Seed(time.Now().UnixNano()) // Go 1.20之前需要
-
 	bar24x7 := make(Bar, 10)
 	for seatId := 0; seatId < cap(bar24x7); seatId++ {
 		bar24x7 <- Seat(seatId)
@@ -662,8 +650,6 @@ func ServeCustomer(consumers chan int) {
 }
 
 func main() {
-	rand.Seed(time.Now().UnixNano()) // Go 1.20之前需要
-
 	const BarSeatCount = 10
 	consumers := make(chan int)
 	for i := 0; i < BarSeatCount; i++ {
@@ -686,8 +672,8 @@ func main() {
 
 import (
 	"log"
-	"time"
 	"math/rand"
+	"time"
 )
 
 type Customer struct{id int}
@@ -701,8 +687,6 @@ func (bar Bar) ServeCustomer(c Customer) {
 }
 
 func main() {
-	rand.Seed(time.Now().UnixNano()) // Go 1.20之前需要
-
 	bar24x7 := make(Bar, 10) // 最多同时服务10位顾客
 	for customerId := 0; ; customerId++ {
 		time.Sleep(time.Second * 2)
@@ -1057,8 +1041,6 @@ func source(c chan<- int32) {
 }
 
 func main() {
-	rand.Seed(time.Now().UnixNano()) // Go 1.20之前需要
-
 	c := make(chan int32, 1) // 此通道容量必须至少为1
 	for i := 0; i < 5; i++ {
 		go source(c)
@@ -1100,8 +1082,6 @@ func source() <-chan int32 {
 }
 
 func main() {
-	rand.Seed(time.Now().UnixNano()) // Go 1.20之前需要
-
 	var rnd int32
 	// 阻塞在此直到某个数据源率先回应。
 	select{

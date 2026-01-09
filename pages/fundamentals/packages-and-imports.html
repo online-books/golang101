@@ -129,12 +129,9 @@ func main() {
 import (
 	"fmt"
 	"math/rand"
-	"time"
 )
 
 func main() {
-	// 设置随机数种子（仅在Go 1.20之前需要）。
-	rand.Seed(time.Now().UnixNano())
 	fmt.Printf("下一个伪随机数是%v。\n", rand.Uint32())
 }
 </code></pre>
@@ -148,13 +145,6 @@ func main() {
 </li>
 <li>
 	函数调用<code>time.Now()</code>将返回一个表示当前时间的类型为<code>time.Time</code>的值。
-</li>
-<li>
-	<code>UnixNano</code>是类型<code>time.Time</code>的一个方法。
-	我们可以把方法看作是特殊的函数。方法将在<a href="method.html">Go中的方法</a>一文中详述。
-	方法调用<code>aTime.UnixNano()</code>将返回从UTC时间的1970年一月一日到<code>aTime</code>所表示的时间之间的纳秒数。
-	返回结果的类型为<code>int64</code>，这也是<code>rand.Seed</code>函数的参数类型（注意：<code>rand.Seed</code>函数从Go 1.20开始被声明为废弃了）。
-	在上例中，此方法调用的结果用来设置随机数种子。
 </li>
 </ul>
 
@@ -526,11 +516,9 @@ import time "time"      // <=> import "time"
 import (
 	format "fmt"
 	random "math/rand"
-	"time"
 )
 
 func main() {
-	random.Seed(time.Now().UnixNano())
 	format.Print("一个随机数:", random.Uint32(), "\n")
 
 	// 下面这行编译不通过，因为rand不可识别。

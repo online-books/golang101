@@ -72,7 +72,7 @@ func (age *Age) Increase() {
 
 // 为自定义的函数类型FilterFunc声明方法。
 type FilterFunc func(in int) bool
-func (ff FilterFunc) Filte(in int) bool {
+func (ff FilterFunc) Filter(in int) bool {
 	return ff(in)
 }
 
